@@ -45,7 +45,7 @@ model Picture {
     userId      String   @map("user_id")
     createdAt   DateTime @default(now()) @map(name: "created_at")
     updatedAt   DateTime @default(now()) @map(name: "updated_at")
-    Albums      Album[]
+    albums      Album[]
 
     @@map(name: "pictures")
 }

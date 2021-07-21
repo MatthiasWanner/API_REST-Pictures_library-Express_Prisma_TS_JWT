@@ -6,7 +6,7 @@ const getPictures: AlbumHandlers["getPictures"] = async (req, res, next) => {
   try {
     const pictures = await prisma.picture.findMany({
       where: {
-        Albums: {
+        albums: {
           some: {
             id,
           },
