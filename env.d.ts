@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { User, Picture } from "@prisma/client";
+import { User, Picture, Album } from "@prisma/client";
 
 type IUserResponse = Omit<User, "password">;
 
@@ -24,5 +24,15 @@ interface PictureHandlers {
   getOne: RequestHandler<{ id: string }, Picture, null>;
   post: RequestHandler<Record<string, never>, Picture | Error, IPictureBoby>;
   put: RequestHandler<{ id: string }, null, IPictureBoby>;
+  delete: RequestHandler<{ id: string }, null, null>;
+}
+
+type IAlbumBoby = Omit<Album, "id">;
+
+interface AlbumHandlers {
+  getAll: RequestHandler<Record<string, never>, Album[], null>;
+  getOne: RequestHandler<{ id: string }, Album, null>;
+  post: RequestHandler<Record<string, never>, Album | Error, IAlbumBoby>;
+  put: RequestHandler<{ id: string }, null, IAlbumBoby>;
   delete: RequestHandler<{ id: string }, null, null>;
 }
