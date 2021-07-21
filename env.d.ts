@@ -38,9 +38,20 @@ type IAlbumPutBody = Omit<Picture, "id" | "userId">;
 interface AlbumHandlers {
   getAll: RequestHandler<Record<string, never>, Album[], null>;
   getOne: RequestHandler<{ id: string }, Album, null>;
+  getPictures: RequestHandler<{ id: string }, Picture[], null>;
   post: RequestHandler<Record<string, never>, Album | Error, IAlbumPostBoby>;
+  postPicture: RequestHandler<
+    { albumId: string; pictureId: string },
+    null | Error,
+    null
+  >;
   put: RequestHandler<{ id: string }, null, IAlbumPutBody>;
   delete: RequestHandler<{ id: string }, null, null>;
+  deletePicture: RequestHandler<
+    { albumId: string; pictureId: string },
+    null,
+    null
+  >;
 }
 
 type ICategoryPostBoby = Omit<Category, "id">;
