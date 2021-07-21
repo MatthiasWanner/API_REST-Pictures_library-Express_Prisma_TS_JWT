@@ -15,7 +15,9 @@ interface UserHandlers {
   delete: RequestHandler<{ id: string }, null, null>;
 }
 
-type IPictureBoby = Omit<Picture, "id" | "url" | "userId">;
+type IPictureBoby = Omit<Picture, "id">;
+
+type IPicturePutBody = Omit<Picture, "id" | "url" | "userId">;
 
 interface PictureHandlers {
   getAll: RequestHandler<Record<string, never>, Picture[], null>;
