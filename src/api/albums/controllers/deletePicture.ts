@@ -21,6 +21,7 @@ const deletePicture: AlbumHandlers["deletePicture"] = async (
       },
     });
 
+    //TODO: Send error or 204 if picture is not found => today it respond ok when related to a picture that does not exist
     return res.sendStatus(200);
   } catch (e) {
     next(e);
