@@ -1,5 +1,6 @@
 import express from "express";
 
+import auth from "./auth/routes";
 import users from "./users/routes";
 import pictures from "./pictures/routes";
 import albums from "./albums/routes";
@@ -12,6 +13,8 @@ router.get("/", (req, res) => {
     message: "API - 👋🌎🌍🌏",
   });
 });
+
+router.use("/auth", auth);
 
 router.use("/users", users);
 router.use("/pictures", pictures);
