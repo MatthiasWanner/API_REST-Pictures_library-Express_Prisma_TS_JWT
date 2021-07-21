@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "allowJs": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "types": ["node"],
+    "lib": ["esnext"],
+    "outDir": "dist"
+  },
+  "exclude": ["dist", "prisma"]
+}
