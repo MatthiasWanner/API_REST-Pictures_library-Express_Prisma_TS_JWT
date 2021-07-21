@@ -1,7 +1,7 @@
 import { PictureHandlers } from "../../../../env";
 import { prisma } from "../../../../prisma/prisma.client";
 
-const putUser: PictureHandlers["put"] = async (req, res, next) => {
+const putPicture: PictureHandlers["put"] = async (req, res, next) => {
   const { id } = req.params;
   const { title, description } = req.body;
 
@@ -21,4 +21,4 @@ const putUser: PictureHandlers["put"] = async (req, res, next) => {
     next(err);
   }
 };
-export default putUser;
+export default putPicture;
