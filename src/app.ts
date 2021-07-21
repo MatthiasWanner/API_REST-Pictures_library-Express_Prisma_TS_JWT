@@ -16,7 +16,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/", api);
+app.use("/", api);
 
 app.use(notFound);
 app.use(errorHandler);

@@ -1,5 +1,7 @@
 import express from "express";
 
+import users from "./users/routes";
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -7,5 +9,7 @@ router.get("/", (req, res) => {
     message: "API - 👋🌎🌍🌏",
   });
 });
+
+router.use("/users", users);
 
 export default router;
