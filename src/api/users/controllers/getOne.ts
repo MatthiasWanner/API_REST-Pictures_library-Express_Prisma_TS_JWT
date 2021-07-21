@@ -21,7 +21,9 @@ const getOne: UserHandlers["getOne"] = async (req, res, next) => {
         updatedAt: true,
       },
     });
-    if (!user) throw new Error("User not found");
+
+    if (!user) return res.sendStatus(204);
+
     return res.status(200).json(user);
   } catch (e) {
     next(e);
