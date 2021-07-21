@@ -43,9 +43,9 @@ interface AlbumHandlers {
   delete: RequestHandler<{ id: string }, null, null>;
 }
 
-type ICategoryPostBoby = Omit<Album, "id">;
+type ICategoryPostBoby = Omit<Category, "id">;
 
-type ICategoryPutBoby = Omit<Picture, "id" | "userId">;
+type ICategoryPutBoby = Omit<Category, "id" | "userId">;
 
 interface CategoryHandlers {
   getAll: RequestHandler<Record<string, never>, Category[], null>;
