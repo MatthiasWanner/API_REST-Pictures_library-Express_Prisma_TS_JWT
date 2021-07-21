@@ -39,6 +39,7 @@ interface AlbumHandlers {
   getAll: RequestHandler<Record<string, never>, Album[], null>;
   getOne: RequestHandler<{ id: string }, Album, null>;
   getPictures: RequestHandler<{ id: string }, Picture[], null>;
+  getCategories: RequestHandler<{ id: string }, Category[], null>;
   post: RequestHandler<Record<string, never>, Album | Error, IAlbumPostBoby>;
   postPicture: RequestHandler<
     { albumId: string; pictureId: string },
@@ -61,11 +62,22 @@ type ICategoryPutBoby = Omit<Category, "id" | "userId">;
 interface CategoryHandlers {
   getAll: RequestHandler<Record<string, never>, Category[], null>;
   getOne: RequestHandler<{ id: string }, Category, null>;
+  getAlbums: RequestHandler<{ id: string }, Album[], null>;
   post: RequestHandler<
     Record<string, never>,
     Category | Error,
     ICategoryPostBoby
   >;
+  postAlbum: RequestHandler<
+    { categoryId: string; albumId: string },
+    null | Error,
+    null
+  >;
   put: RequestHandler<{ id: string }, null, ICategoryPutBoby>;
   delete: RequestHandler<{ id: string }, null, null>;
+  deleteAlbum: RequestHandler<
+    { categoryId: string; albumId: string },
+    null,
+    null
+  >;
 }
