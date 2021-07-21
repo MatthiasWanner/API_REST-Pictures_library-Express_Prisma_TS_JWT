@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { User, Picture, Album } from "@prisma/client";
+import { User, Picture, Album, Category } from "@prisma/client";
 
 type IUserResponse = Omit<User, "password">;
 
@@ -15,26 +15,46 @@ interface UserHandlers {
   delete: RequestHandler<{ id: string }, null, null>;
 }
 
-type IPictureBoby = Omit<Picture, "id">;
+type IPicturePostBoby = Omit<Picture, "id">;
 
 type IPicturePutBody = Omit<Picture, "id" | "url" | "userId">;
 
 interface PictureHandlers {
   getAll: RequestHandler<Record<string, never>, Picture[], null>;
   getOne: RequestHandler<{ id: string }, Picture, null>;
-  post: RequestHandler<Record<string, never>, Picture | Error, IPictureBoby>;
-  put: RequestHandler<{ id: string }, null, IPictureBoby>;
+  post: RequestHandler<
+    Record<string, never>,
+    Picture | Error,
+    IPicturePostBoby
+  >;
+  put: RequestHandler<{ id: string }, null, IPicturePutBody>;
   delete: RequestHandler<{ id: string }, null, null>;
 }
 
-type IAlbumBoby = Omit<Album, "id">;
+type IAlbumPostBoby = Omit<Album, "id">;
 
 type IAlbumPutBody = Omit<Picture, "id" | "userId">;
 
 interface AlbumHandlers {
   getAll: RequestHandler<Record<string, never>, Album[], null>;
   getOne: RequestHandler<{ id: string }, Album, null>;
-  post: RequestHandler<Record<string, never>, Album | Error, IAlbumBoby>;
+  post: RequestHandler<Record<string, never>, Album | Error, IAlbumPostBoby>;
   put: RequestHandler<{ id: string }, null, IAlbumPutBody>;
+  delete: RequestHandler<{ id: string }, null, null>;
+}
+
+type ICategoryPostBoby = Omit<Album, "id">;
+
+type ICategoryPutBoby = Omit<Picture, "id" | "userId">;
+
+interface CategoryHandlers {
+  getAll: RequestHandler<Record<string, never>, Category[], null>;
+  getOne: RequestHandler<{ id: string }, Category, null>;
+  post: RequestHandler<
+    Record<string, never>,
+    Category | Error,
+    ICategoryPostBoby
+  >;
+  put: RequestHandler<{ id: string }, null, ICategoryPutBoby>;
   delete: RequestHandler<{ id: string }, null, null>;
 }
