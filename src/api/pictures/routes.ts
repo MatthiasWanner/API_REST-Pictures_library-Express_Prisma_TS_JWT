@@ -1,4 +1,5 @@
 import express from "express";
+import deletePicture from "./controllers/delete";
 
 import getAll from "./controllers/getAll";
 import getOne from "./controllers/getOne";
@@ -12,5 +13,6 @@ router.get("/:id", getOne);
 
 router.post("/", postPicture);
 router.put("/:id", putPicture);
+router.delete("/:id", deletePicture);
 
 export default router;
