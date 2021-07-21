@@ -3,11 +3,11 @@ import { prisma } from "../../../../prisma/prisma.client";
 
 const putUser: UserHandlers["put"] = async (req, res, next) => {
   const { id } = req.params;
-  const { email, username, biography, avatarUrl, firstname, lastname } =
+  const { email, username, biography, avatarUrl, firstname, lastname, role } =
     req.body;
 
   try {
-    const user = await prisma.user.update({
+    await prisma.user.update({
       where: {
         id,
       },
@@ -18,6 +18,7 @@ const putUser: UserHandlers["put"] = async (req, res, next) => {
         avatarUrl,
         firstname,
         lastname,
+        role,
       },
       select: {
         id: true,
@@ -33,7 +34,7 @@ const putUser: UserHandlers["put"] = async (req, res, next) => {
       },
     });
 
-    res.status(200).json(user);
+    res.status(200);
   } catch (err) {
     next(err);
   }
