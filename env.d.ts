@@ -29,10 +29,12 @@ interface PictureHandlers {
 
 type IAlbumBoby = Omit<Album, "id">;
 
+type IAlbumPutBody = Omit<Picture, "id" | "userId">;
+
 interface AlbumHandlers {
   getAll: RequestHandler<Record<string, never>, Album[], null>;
   getOne: RequestHandler<{ id: string }, Album, null>;
   post: RequestHandler<Record<string, never>, Album | Error, IAlbumBoby>;
-  put: RequestHandler<{ id: string }, null, IAlbumBoby>;
+  put: RequestHandler<{ id: string }, null, IAlbumPutBody>;
   delete: RequestHandler<{ id: string }, null, null>;
 }
