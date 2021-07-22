@@ -10,6 +10,9 @@ type IUserPut = Omit<User, "id" | "password">;
 interface UserHandlers {
   getAll: RequestHandler<Record<string, never>, IUserResponse[], null>;
   getOne: RequestHandler<{ id: string }, IUserResponse, null>;
+  getAlbums: RequestHandler<{ id: string }, Album[], null>;
+  getPictures: RequestHandler<{ id: string }, Picture[], null>;
+  getCategories: RequestHandler<{ id: string }, Category[], null>;
   post: RequestHandler<Record<string, never>, IUserResponse | Error, IUserPost>;
   put: RequestHandler<{ id: string }, null, IUserPut>;
   delete: RequestHandler<{ id: string }, null, null>;
