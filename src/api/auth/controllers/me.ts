@@ -5,12 +5,23 @@ const me: AuthHandlers["me"] = async (req, res, next) => {
   try {
     const user = await prisma.user.findUnique({
       where: {
-        username: req.user.username,
+        username: req.user?.username,
+      },
+      select: {
+        id: true,
+        username: true,
+        firstname: true,
+        lastname: true,
+        email: true,
+        biography: true,
+        avatarUrl: true,
+        role: true,
+        createdAt: true,
+        updatedAt: true,
       },
     });
 
     if (user) {
-      delete user.password;
       return res.status(200).json(user);
     }
 

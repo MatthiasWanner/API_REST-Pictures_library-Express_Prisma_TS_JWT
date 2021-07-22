@@ -23,6 +23,8 @@ const login: AuthHandlers["login"] = async (req, res, next) => {
       throw new Error("Wrong password");
     }
 
+    /* eslint-disable @typescript-eslint/ban-ts-comment */
+    // @ts-ignore
     delete user.password;
 
     const token = jwt.sign(

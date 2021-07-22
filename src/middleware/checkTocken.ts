@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { ICustomJWT } from "../../custom";
 
 import { AuthHandlers } from "../../env";
 
@@ -10,7 +11,7 @@ const checkToken: AuthHandlers["checkToken"] = (req, res, next) => {
       throw new Error("You need to login.");
     }
 
-    req.user = jwt.verify(token, process.env.SECRET as string);
+    req.user = jwt.verify(token, process.env.SECRET as string) as ICustomJWT;
 
     return next();
   } catch (err) {
