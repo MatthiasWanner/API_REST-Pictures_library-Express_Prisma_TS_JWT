@@ -7,7 +7,7 @@ interface ICustomJWT extends JwtPayload {
 
 declare global {
   namespace Express {
-    export interface Request {
+    interface Request {
       user?: ICustomJWT;
     }
   }

@@ -10,7 +10,8 @@
     "sourceMap": true,
     "types": ["node"],
     "lib": ["esnext"],
-    "outDir": "dist"
+    "outDir": "dist",
+    "typeRoots": ["./custom.d.ts", "./node_modules/@types"]
   },
   "exclude": ["dist", "prisma"]
 }
