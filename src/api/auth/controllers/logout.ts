@@ -1,4 +1,4 @@
-import { AuthHandlers } from "../../../../env";
+import { AuthHandlers } from "../interfaces";
 
 const logout: AuthHandlers["logout"] = (req, res, next) => {
   try {

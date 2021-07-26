@@ -1,4 +1,4 @@
-import { AuthHandlers } from "../../../../env";
+import { AuthHandlers } from "../interfaces";
 import { prisma } from "../../../../prisma/prisma.client";
 
 const me: AuthHandlers["me"] = async (req, res, next) => {

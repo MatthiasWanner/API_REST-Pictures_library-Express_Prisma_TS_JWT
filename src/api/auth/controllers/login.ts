@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { AuthHandlers } from "../../../../env";
+import { AuthHandlers } from "../interfaces";
 import { prisma } from "../../../../prisma/prisma.client";
 
 const login: AuthHandlers["login"] = async (req, res, next) => {
@@ -23,9 +23,7 @@ const login: AuthHandlers["login"] = async (req, res, next) => {
       throw new Error("Wrong password");
     }
 
-    /* eslint-disable @typescript-eslint/ban-ts-comment */
-    // @ts-ignore
-    delete user.password;
+    const { password: _pw, ...withoutPassword } = user;
 
     const token = jwt.sign(
       { username: user.username, role: user.role },
@@ -39,7 +37,7 @@ const login: AuthHandlers["login"] = async (req, res, next) => {
       secure: process.env.NODE_ENV !== "development",
     });
 
-    return res.status(200).json(user);
+    return res.status(200).json(withoutPassword);
   } catch (e) {
     res.status(400);
     return next(e);

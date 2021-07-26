@@ -1,4 +1,4 @@
-import { NextFunction, RequestHandler } from "express";
+import { RequestHandler } from "express";
 import { User, Picture, Album, Category } from "@prisma/client";
 
 type IUserResponse = Omit<User, "password">;
@@ -88,19 +88,4 @@ interface CategoryHandlers {
 interface IAuthBoby {
   username: string;
   password: string;
-}
-
-interface AuthHandlers {
-  login: RequestHandler<
-    Record<string, never>,
-    IUserResponse | Error,
-    IAuthBoby
-  >;
-  logout: RequestHandler<
-    Record<string, never>,
-    { message: string } | Error,
-    null
-  >;
-  me: RequestHandler<Record<string, never>, IUserResponse, null>;
-  checkToken: RequestHandler<Record<string, never>, NextFunction, null>;
 }

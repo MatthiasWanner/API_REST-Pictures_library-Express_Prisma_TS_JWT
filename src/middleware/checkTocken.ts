@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { ICustomJWT } from "../../custom";
 
-import { AuthHandlers } from "../../env";
+import { AuthHandlers } from "../api/auth/interfaces";
 
 const checkToken: AuthHandlers["checkToken"] = (req, res, next) => {
   try {
